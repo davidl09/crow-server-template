@@ -2,3 +2,4 @@ zlib1g-dev
 libssl-dev
 libcurl4-openssl-dev
 libsqlite3-dev
+nginx
