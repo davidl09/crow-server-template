@@ -6,7 +6,7 @@ project(${PROJECT_NAME} C CXX)
 set(CMAKE_CXX_STANDARD 23)
 set(CMAKE_RUNTIME_OUTPUT_DIRECTORY "${CMAKE_SOURCE_DIR}/server")
 
-set(CROW_INCLUDE_DIR "${CMAKE_CURRENT_SOURCE_DIR}/Crow/include")
+set(CROW_INCLUDE_DIR "${CMAKE_CURRENT_SOURCE_DIR}/crow/include")
 set(INJA_INCLUDE_DIR "${CMAKE_CURRENT_SOURCE_DIR}/inja/single_include/inja")
 set(MAIL_INCLUDE_DIR "${CMAKE_CURRENT_SOURCE_DIR}/mailclient-cpp/MAIL")
 
@@ -32,7 +32,8 @@ target_link_libraries(
         mailclient
         curlpp
         sqlpp11::sqlpp11
-        crypt
+        sqlpp11::sqlite3
+        crypto
         ssl
         z
 )
