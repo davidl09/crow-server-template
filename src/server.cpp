@@ -15,22 +15,6 @@ webServer::webServer()
         ss << std::chrono::steady_clock::now().time_since_epoch();
         return ss.str();
     });
-
-    CROW_ROUTE(app, "/login").methods(HTTPMethod::Post)([this](const request& req, response& res) {
-        auto& session = app.get_context<Session>(req);
-        ranges::for_each(session.keys(), [](const auto& key) {std::cout << key;});
-
-        const auto myAuth = req.get_header_value("Authorization");
-        std::string myAuth_d = utility::base64decode(myAuth);
-        std::string_view username = myAuth_d.substr(0, myAuth_d.find(':'));
-        if (username.length() == myAuth_d.length()) {
-            res.code = 401;
-            res.end();
-            return;
-        }
-        std::string_view pword = myAuth_d.substr(myAuth_d.find(':') + 1);
-        auto phash = sha256Hash(pword);
-    });
 }
 
 std::string webServer::sha256Hash(std::string_view str) {

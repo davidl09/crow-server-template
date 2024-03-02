@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 3.27)
-set(PROJECT_NAME crow_login)
+set(PROJECT_NAME crow-template)
 project(${PROJECT_NAME} C CXX)
 
 
@@ -32,7 +32,7 @@ target_link_libraries(
         mailclient
         curlpp
         sqlpp11::sqlpp11
-        sqlpp11::sqlite3
+        sqlite3
         crypto
         ssl
         z
