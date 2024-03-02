@@ -30,6 +30,19 @@ do
     fi
 done < "$PKG_FILE"
 
+echo "Installing sqlpp11"
+
+git clone https://github.com/rbock/sqlpp11
+cd sqlpp11 || exit
+mkdir build
+cd build || echo "Error: could not create build directory"
+cmake -DBUILD_SQLITE3_CONNECTOR=ON -DDEPENDENCY_CHECK=ON -DBUILD_TESTING=OFF ..
+
+
+cd ../..
+sudo rm -r  sqlpp11
+echo "Successfully installed sqlpp11 system-wide"
+
 echo "Package installation completed."
 
 
