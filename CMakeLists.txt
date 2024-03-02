@@ -11,15 +11,11 @@ set(INJA_INCLUDE_DIR "${CMAKE_CURRENT_SOURCE_DIR}/inja/single_include/inja")
 set(MAIL_INCLUDE_DIR "${CMAKE_CURRENT_SOURCE_DIR}/mailclient-cpp/MAIL")
 
 
-###
-include(FetchContent)
-FetchContent_Declare(sqlpp11
-        GIT_REPOSITORY  https://github.com/rbock/sqlpp11
-        GIT_TAG         origin/main
+find_package(
+        Sqlpp11
+        COMPONENTS SQLite3
+        REQUIRED
 )
-
-add_subdirectory(sqlpp11)
-###
 
 
 add_subdirectory(mailclient-cpp)
